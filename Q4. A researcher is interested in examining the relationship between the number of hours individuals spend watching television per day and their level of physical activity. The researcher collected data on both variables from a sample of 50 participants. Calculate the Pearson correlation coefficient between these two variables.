@@ -1,0 +1,30 @@
+import numpy as np
+import pandas as pd
+from scipy.stats import pearsonr
+
+# Sample data: TV hours per day and Physical Activity hours per day
+data = {
+    'TV_Hours': [2, 3, 1, 4, 2, 3, 5, 1, 4, 2],
+    'Physical_Activity': [1.5, 1.0, 2.0, 0.5, 1.7, 1.2, 0.4, 2.5, 0.8, 1.8]
+}
+
+df = pd.DataFrame(data)
+
+# Calculate Pearson correlation coefficient
+pearson_corr, _ = pearsonr(df['TV_Hours'], df['Physical_Activity'])
+
+print(f"Pearson correlation coefficient: {pearson_corr}")
+
+# Plot the data points
+import matplotlib.pyplot as plt
+
+plt.scatter(df['TV_Hours'], df['Physical_Activity'], color='blue', label='Data points')
+
+# Adding labels and title
+plt.xlabel('TV Hours per Day')
+plt.ylabel('Physical Activity Hours per Day')
+plt.title('TV Hours vs Physical Activity')
+plt.legend()
+
+# Show the plot
+plt.show()
